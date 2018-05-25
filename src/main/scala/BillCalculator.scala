@@ -13,4 +13,6 @@ object BillCalculator {
   def priceOf(key: String): Int = { Prices.getOrElse(key.toLowerCase, 0) }
 
   val PoundsConversionFactor: Float = 100.0f
+
+  val Drinks : Set[String] = Set("cola", "coffee")
 }
