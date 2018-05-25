@@ -5,5 +5,5 @@ class BillCalculator {
 
 object BillCalculator {
 
-  val Prices : Map[String, Int] = Map("cola" -> 50)
+  val Prices : Map[String, Int] = Map("cola" -> 50, "coffee" -> 100)
 }
