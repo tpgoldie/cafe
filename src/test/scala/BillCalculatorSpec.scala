@@ -19,4 +19,10 @@ class BillCalculatorSpec extends FlatSpec with MustMatchers {
     val actual = BillCalculator.Prices("cheese sandwich")
     actual must equal(200)
   }
+
+  "A bill calculator" should "know the price of steak sandwich in pence" in {
+
+    val actual = BillCalculator.Prices("steak sandwich")
+    actual must equal(450)
+  }
 }
