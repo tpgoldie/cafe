@@ -1,8 +1,14 @@
 class BillCalculator {
 
+  private val serviceChargable = new ServiceChargable
+
   def calculate(items: List[String]): Float = {
 
-    items.map(item => BillCalculator.priceOf(item)).sum / BillCalculator.PoundsConversionFactor;
+    val unitCost = items.map(item => BillCalculator.priceOf(item)).sum
+
+    val serviceCharge = serviceChargable.charge(items)
+
+    (unitCost + serviceCharge) /  BillCalculator.PoundsConversionFactor
   }
 }
 
@@ -15,4 +21,8 @@ object BillCalculator {
   val PoundsConversionFactor: Float = 100.0f
 
   val Drinks : Set[String] = Set("cola", "coffee")
+
+  val Foods : Set[String] = Set("cheese sandwich", "steak sandwich")
+
+  val HotFoods : Set[String] = Set("steak sandwich")
 }

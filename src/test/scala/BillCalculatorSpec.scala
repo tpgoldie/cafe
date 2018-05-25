@@ -32,17 +32,24 @@ class BillCalculatorSpec extends FlatSpec with MustMatchers {
     actual must equal(0)
   }
 
-  "A bill calculator" should "calculate the total bill of a list of different single items in pounds and pence" in {
+  "A bill calculator" should "calculate the total bill of a list of drinks in pounds and pence with no service charge" in {
+    val calculator = new BillCalculator()
+
+    val actual = calculator.calculate(List("Cola", "Coffee", "Cola"))
+    actual must equal(2.0f)
+  }
+
+  "A bill calculator" should "calculate the total bill of a list of different single items in pounds and pence with service charge of 10%" in {
     val calculator = new BillCalculator()
 
     val actual = calculator.calculate(List("Cola", "Coffee", "Cheese Sandwich"))
-    actual must equal(3.5)
+    actual must equal(3.85f)
   }
 
   "A bill calculator" should "calculate the total bill of a list of different multiple items in pounds and pence" in {
     val calculator = new BillCalculator()
 
     val actual = calculator.calculate(List("Cola", "Coffee", "Cola", "Cheese Sandwich", "Coffee", "Coffee"))
-    actual must equal((100 + 300 + 200) / 100.0)
+    actual must equal((100 + 300 + 200 + 60) / 100.0f)
   }
 }
